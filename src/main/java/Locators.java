@@ -8,7 +8,7 @@ public class Locators {
     public static final String DOMAIN_MAILRU = "@mail.ru";
     public static final String DOMAIN_IUA = "@i.ua";
     public static final String DOMAIN_YANDEX = "@yandex.ru";
-    public static final String URL_YANDEX = "https://yandex.ru";
+    public static final String URL_YANDEX = "https://mail.yandex.ua/";
     public static final String URL_IUA = "http://www.i.ua/";
     public static final String URL_MAILRU = "https://mail.ru";
     public static final String URL_GOOGLE = "https://www.gmail.com";
@@ -47,6 +47,23 @@ public class Locators {
     public static final String IUA_XPATH_STATUS_LINE ="//div[@class='block_confirmation']//div[@class='content clear']";
     public static final String IUA_XPATH_SENT_LETTER_SUBJ="//div[contains(concat(' ',@class, ' '),' message_header ')]//h3";
 
-
+    public static final String YANDEX_XPATH_LOGIN = "//input[@name='login']";
+    public static final String YANDEX_XPATH_PASSWORD = "//input[@name='passwd']";
+    public static final String YANDEX_CSS_SUBMIT = ".nb-button._nb-action-button.nb-group-start";
+    public static final String YANDEX_XPATH_SETTINGS = "//span[contains(concat(' ',@class, ' '),' header-user-name ')]";
+    public static final String YANDEX_XPATH_LOGOUT = "//a[@data-metric='Меню сервисов:Выход']";
+    public static final String YANDEX_XPATH_CREATE_LETTER = "//div[@class='block-toolbar'][1]//a[@href='#compose']";
+    public static final String YANDEX_XPATH_TO="//div[@class='b-yabble b-yabble_focused']//input";
+    public static final String YANDEX_XPATH_SUBJ="//input[@id='compose-subj']";
+    public static final String YANDEX_XPATH_BODY="//textarea[@id='compose-send']";
+    public static final String YANDEX_XPATH_CONFIRM_SAVEDRAFT="//button[@data-action='dialog.save']";
+    public static final String YANDEX_XPATH_SAVEDRAFT="//button[@data-action='compose.close']";
+    public static final String YANDEX_XPATH_DRAFTS="//a[@href='#draft']";
+    public static final String YANDEX_XPATH_LAST_DRAFT ="//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__from__text']";
+    public static final String YANDEX_XPATH_SEND_BUTTON = "//button[@id='compose-submit']";
+    public static final String YANDEX_XPATH_SENT_LETTERS ="//a[@href='#sent']";
+    public static final String YANDEX_XPATH_LAST_SENT_LETTER="//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__subject']";
+    public static final String YANDEX_XPATH_STATUS_LINE ="//span[@class='b-compose-message__actions__helper__date']";
+    public static final String YANDEX_XPATH_SENT_LETTER_SUBJ="//span[@class='js-message-subject js-invalid-drag-target']";
 
 }

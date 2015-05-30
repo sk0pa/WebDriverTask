@@ -15,17 +15,18 @@ public class MailPage extends PageObject {
     public void startLetter(String to, String subject, String body,
                             WebElement elementTo,
                             WebElement elementSubj,
-                            WebElement elementBody,
-                            WebElement saveLetter){
-      //  elementTo.clear();
+                            WebElement elementBody) {
+        //  elementTo.clear();
         elementTo.sendKeys(to);
 
-   //     elementSubj.clear();
+        //     elementSubj.clear();
         elementSubj.sendKeys(subject);
 
         elementBody.clear();
         elementBody.sendKeys(body);
+    }
 
+    public void saveDraft(WebElement saveLetter){
         saveLetter.click();
     }
 

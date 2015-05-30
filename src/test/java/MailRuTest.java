@@ -38,10 +38,11 @@ public class MailRuTest {
         WebElement toField = helper.getByXpath(Locators.MAILRU_XPATH_TO);
         WebElement subjField = helper.getByXpath(Locators.MAILRU_XPATH_SUBJ);
         WebElement bodyField = helper.getByXpath(Locators.MAILRU_XPATH_BODY);
-        WebElement saveButton = helper.getByXpath(Locators.MAILRU_XPATH_SAVEDRAFT);
         String to = Locators.LOGIN+Locators.DOMAIN_YANDEX;
         mailPage.startLetter(to, Locators.SUBJECT, Locators.BODY, toField,
-                subjField, bodyField, saveButton);
+                subjField, bodyField);
+        WebElement saveButton = helper.getByXpath(Locators.MAILRU_XPATH_SAVEDRAFT);
+        mailPage.saveDraft(saveButton);
         WebElement statusLine = helper.getByXpath(Locators.MAILRU_XPATH_STATUS_LINE);
         Assert.assertTrue(statusLine.getText().contains("Сохранено в"));
     }
