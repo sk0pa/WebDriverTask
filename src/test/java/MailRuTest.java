@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -8,15 +9,13 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class MailRuTest {
-    WebDriver driver;
+    static WebDriver driver = new FirefoxDriver();
     Helper helper;
     MailPage mailPage;
     SentLattesPage sentLattesPage;
 
     @BeforeClass
     public void setUp(){
-        WebDriver newdriver = BrowserRunner.runChrome();
-        this.driver = newdriver;
         this.helper = new Helper(driver);
         driver.get(Locators.URL_MAILRU);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -44,7 +43,7 @@ public class MailRuTest {
         mailPage.startLetter(to, Locators.SUBJECT, Locators.BODY, toField,
                 subjField, bodyField, saveButton);
         WebElement statusLine = helper.getByXpath(Locators.MAILRU_XPATH_STATUS_LINE);
-        Assert.assertTrue(statusLine.getText().contains("Сохранено в"));
+        Assert.assertTrue(statusLine.getText().contains("РЎРѕС…СЂР°РЅРµРЅРѕ РІ"));
     }
 
     @Test(priority=2, description = "Check letter in drafts and send")
@@ -54,16 +53,14 @@ public class MailRuTest {
         WebElement lastDraft = helper.getByXpath(Locators.MAILRU_XPATH_LAST_DRAFT);
         draftPage.openLastDraft(lastDraft);
         WebElement toField = helper.getByXpath(Locators.MAILRU_XPATH_TO);
-        WebElement subjField = helper.getByXpath(Locators.MAILRU_XPATH_SUBJ);
         WebElement bodyField = helper.getByXpath(Locators.MAILRU_XPATH_BODY);
         Assert.assertTrue(toField.getText().contains(Locators.LOGIN));
-        Assert.assertTrue(subjField.getText().contains(Locators.SUBJECT));
         Assert.assertTrue(bodyField.getText().contains(Locators.BODY));
 
         WebElement sendButton = helper.getByXpath(Locators.MAILRU_XPATH_SEND_BUTTON);
+        draftPage.sendLetter(sendButton);
         WebElement sentLetters = helper.getByXpath(Locators.MAILRU_XPATH_SENT_LETTERS);
-        sentLattesPage = draftPage.goToSendedPage(sendButton, sentLetters);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        sentLattesPage = draftPage.goToSendedPage(sentLetters);
     }
 
     @Test(priority=3, description = "Check letter in sent")

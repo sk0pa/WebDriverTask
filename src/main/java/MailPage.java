@@ -17,10 +17,10 @@ public class MailPage extends PageObject {
                             WebElement elementSubj,
                             WebElement elementBody,
                             WebElement saveLetter){
-        elementTo.clear();
+      //  elementTo.clear();
         elementTo.sendKeys(to);
 
-        elementSubj.clear();
+   //     elementSubj.clear();
         elementSubj.sendKeys(subject);
 
         elementBody.clear();

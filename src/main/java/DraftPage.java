@@ -13,8 +13,11 @@ public class DraftPage extends PageObject {
         lastDraft.click();
     }
 
-    public SentLattesPage goToSendedPage(WebElement sendButton, WebElement sentLettersLink){
+    public void sendLetter(WebElement sendButton){
         sendButton.click();
+    }
+
+    public SentLattesPage goToSendedPage(WebElement sentLettersLink){
         sentLettersLink.click();
         return new SentLattesPage(this.driver);
     }
