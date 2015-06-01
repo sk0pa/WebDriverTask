@@ -83,9 +83,10 @@ public class Locators {
     public static final String GOOGLE_XPATH_SUBJ="//input[@name='subjectbox']";
     public static final String GOOGLE_XPATH_BODY="//div[@aria-label='Тело письма']";
     public static final String GOOGLE_XPATH_SAVEDRAFT="//img[@data-tooltip = 'Сохранить и закрыть']";
+    public static final String GOOGLE_XPATH_SEARCH="//input[@name='q']";
     public static final String GOOGLE_XPATH_DRAFTS="//a[contains(@title, 'Черновики')]";
-    public static final String GOOGLE_XPATH_LAST_DRAFT ="//div[@role='main']//tr[1]";
-    public static final String GOOGLE_XPATH_SEND_BUTTON = "//div[contains(text(),'Отправить')and@role='button']";
+    public static final String GOOGLE_XPATH_LAST_DRAFT ="//div[@role='main']//tr[1]//td[6]";
+    public static final String GOOGLE_XPATH_SEND_BUTTON = "//div[contains(text(),'Отправить') and @role='button']";
     public static final String GOOGLE_XPATH_STATUS_LINE ="//div[contains(text(),'Письмо отправлено.')]";
     public static final String GOOGLE_XPATH_SENT_LETTERS ="//a[contains(@title, 'Отправленные')]";
     public static final String GOOGLE_XPATH_SENT_LETTER_SUBJ="//div[@role='main']//h2";
