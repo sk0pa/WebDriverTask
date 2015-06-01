@@ -17,7 +17,7 @@ public class DraftPage extends PageObject {
         sendButton.click();
     }
 
-    public SentLattesPage goToSendedPage(WebElement sentLettersLink){
+    public SentLattesPage goToSentPage(WebElement sentLettersLink){
         sentLettersLink.click();
         return new SentLattesPage(this.driver);
     }

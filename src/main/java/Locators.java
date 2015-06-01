@@ -60,10 +60,35 @@ public class Locators {
     public static final String YANDEX_XPATH_SAVEDRAFT="//button[@data-action='compose.close']";
     public static final String YANDEX_XPATH_DRAFTS="//a[@href='#draft']";
     public static final String YANDEX_XPATH_LAST_DRAFT ="//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__from__text']";
+    public static final String YANDEX_XPATH_DRAFT_TEXT ="//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__firstline']";
     public static final String YANDEX_XPATH_SEND_BUTTON = "//button[@id='compose-submit']";
+    public static final String YANDEX_XPATH_IN = "//a[@href='#inbox']";
+    public static final String YANDEX_XPATH_DRAFT_TO = "//span[@class='b-yabble__text__content']";
     public static final String YANDEX_XPATH_SENT_LETTERS ="//a[@href='#sent']";
-    public static final String YANDEX_XPATH_LAST_SENT_LETTER="//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__subject']";
-    public static final String YANDEX_XPATH_STATUS_LINE ="//span[@class='b-compose-message__actions__helper__date']";
+    public static final String YANDEX_XPATH_LAST_SENT_LETTER="//div[@class='b-messages']//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__subject']";
+    public static final String YANDEX_XPATH_LAST_SENT_LETTER_TEXT="//div[@class='b-messages']//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__firstline']";
     public static final String YANDEX_XPATH_SENT_LETTER_SUBJ="//span[@class='js-message-subject js-invalid-drag-target']";
+
+    public static final String GOOGLE_XPATH_CHOOSE_ANOTHER_ACCOUNT = "//a[@id='account-chooser-link']";
+    public static final String GOOGLE_XPATH_ADD_ANOTHER_ACCOUNT = "//a[@id='account-chooser-add-account']";
+    public static final String GOOGLE_XPATH_LOGIN = "//input[@id='Email']";
+    public static final String GOOGLE_XPATH_NEXT_BUTTON = "//input[@id='next']";
+    public static final String GOOGLE_XPATH_PASSWORD = "//input[@id='Passwd']";
+    public static final String GOOGLE_XPATH_SUBMIT = "//input[@id='signIn']";
+
+    public static final String GOOGLE_XPATH_SETTINGS = "//a[contains(@title,'Аккаунт')]";
+    public static final String GOOGLE_XPATH_LOGOUT = "//a[contains(text(),'Выйти')]";
+    public static final String GOOGLE_XPATH_CREATE_LETTER = "//div[contains(@id,':3') and @class='aic']/div/div";
+    public static final String GOOGLE_XPATH_TO="//textarea[@name='to']";
+    public static final String GOOGLE_XPATH_SUBJ="//input[@name='subjectbox']";
+    public static final String GOOGLE_XPATH_BODY="//div[@aria-label='Тело письма']";
+    public static final String GOOGLE_XPATH_SAVEDRAFT="//img[@data-tooltip = 'Сохранить и закрыть']";
+    public static final String GOOGLE_XPATH_DRAFTS="//a[contains(@title, 'Черновики')]";
+    public static final String GOOGLE_XPATH_LAST_DRAFT ="//div[@role='main']//tr[1]";
+    public static final String GOOGLE_XPATH_SEND_BUTTON = "//div[contains(text(),'Отправить')and@role='button']";
+    public static final String GOOGLE_XPATH_STATUS_LINE ="//div[contains(text(),'Письмо отправлено.')]";
+    public static final String GOOGLE_XPATH_SENT_LETTERS ="//a[contains(@title, 'Отправленные')]";
+    public static final String GOOGLE_XPATH_SENT_LETTER_SUBJ="//div[@role='main']//h2";
+
 
 }

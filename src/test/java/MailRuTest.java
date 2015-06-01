@@ -61,7 +61,7 @@ public class MailRuTest {
         WebElement sendButton = helper.getByXpath(Locators.MAILRU_XPATH_SEND_BUTTON);
         draftPage.sendLetter(sendButton);
         WebElement sentLetters = helper.getByXpath(Locators.MAILRU_XPATH_SENT_LETTERS);
-        sentLattesPage = draftPage.goToSendedPage(sentLetters);
+        sentLattesPage = draftPage.goToSentPage(sentLetters);
     }
 
     @Test(priority=3, description = "Check letter in sent")

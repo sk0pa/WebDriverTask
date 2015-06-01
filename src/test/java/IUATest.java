@@ -64,7 +64,7 @@ public class IUATest {
         WebElement sendButton = helper.getByXpath(Locators.IUA_XPATH_SEND_BUTTON);
         draftPage.sendLetter(sendButton);
         WebElement sentLetters = helper.getByXpath(Locators.IUA_XPATH_SENT_LETTERS);
-        sentLattesPage = draftPage.goToSendedPage(sentLetters);
+        sentLattesPage = draftPage.goToSentPage(sentLetters);
     }
 
     @Test(priority=3, description = "Check letter in sent")

@@ -25,7 +25,7 @@ public class YandexTest {
     }
 
     @Test(priority=0, description = "Login to yandex.ua")
-    public void loginToIUA() {
+    public void loginToYandex() {
         LoginPage mainPage = new LoginPage(driver);
         WebElement loginField = helper.getByXpath(Locators.YANDEX_XPATH_LOGIN);
         WebElement passwordField = helper.getByXpath(Locators.YANDEX_XPATH_PASSWORD);
@@ -38,55 +38,59 @@ public class YandexTest {
     public void startLetter(){
         WebElement newLetterButton = helper.getByXpath(Locators.YANDEX_XPATH_CREATE_LETTER);
         newLetterButton.click();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         WebElement toField = helper.getByXpath(Locators.YANDEX_XPATH_TO);
         WebElement subjField = helper.getByXpath(Locators.YANDEX_XPATH_SUBJ);
         WebElement bodyField = helper.getByXpath(Locators.YANDEX_XPATH_BODY);
         String to = Locators.LOGIN+Locators.DOMAIN_GMAIL;
         mailPage.startLetter(to, Locators.SUBJECT, Locators.BODY, toField,
                 subjField, bodyField);
-       // WebElement statusLine = helper.getByXpath(Locators.YANDEX_XPATH_STATUS_LINE);
-       // Assert.assertTrue(statusLine.getText().contains("Сохранено"));
+
         WebElement saveButton = helper.getByXpath(Locators.YANDEX_XPATH_SAVEDRAFT);
         mailPage.saveDraft(saveButton);
+        WebElement cancel = helper.getByXpath("//button[@data-action='dialog.dont_save']");
         WebElement confirm = helper.getByXpath(Locators.YANDEX_XPATH_CONFIRM_SAVEDRAFT);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         confirm.click();
-
     }
 
     @Test(priority=2, description = "Check letter in drafts and send")
     public void sendLetter(){
-
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         WebElement draftLink = helper.getByXpath(Locators.YANDEX_XPATH_DRAFTS);
+        draftLink.click();
         DraftPage draftPage = mailPage.goToDraft(draftLink);
+        if(!helper.isElementEnableByXpath(Locators.YANDEX_XPATH_LAST_DRAFT)){
+            draftLink.click();
+        }
+
         WebElement lastDraft = helper.getByXpath(Locators.YANDEX_XPATH_LAST_DRAFT);
+        WebElement lastDraftText = helper.getByXpath(Locators.YANDEX_XPATH_DRAFT_TEXT);
+        Assert.assertTrue(lastDraftText.getText().contains(Locators.BODY));
         draftPage.openLastDraft(lastDraft);
-
-    //    WebElement subjField = helper.getByXpath(Locators.YANDEX_XPATH_SUBJ);
-    //    WebElement bodyField = helper.getByXpath(Locators.YANDEX_XPATH_BODY);
-    //    System.out.println(subjField.getText());
-    //    System.out.println(bodyField.getText());
-    //    Assert.assertTrue(bodyField.getText().contains(Locators.BODY));
-
+        WebElement copySMS = helper.getByXpath("//div[@class='b-yabble__link js-sms-open-link daria-action']");
         WebElement sendButton = helper.getByXpath(Locators.YANDEX_XPATH_SEND_BUTTON);
         draftPage.sendLetter(sendButton);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         WebElement sentLetters = helper.getByXpath(Locators.YANDEX_XPATH_SENT_LETTERS);
-        sentLattesPage = draftPage.goToSendedPage(sentLetters);
+        sentLetters.click();
+        sentLattesPage = draftPage.goToSentPage(sentLetters);
     }
 
     @Test(priority=3, description = "Check letter in sent")
     public void checkInSent(){
-        WebElement lastLetter = helper.getByXpath(Locators.YANDEX_XPATH_LAST_SENT_LETTER);
-        sentLattesPage.openLastLetter(lastLetter);
-        WebElement letterSubj = helper.getByXpath(Locators.YANDEX_XPATH_SENT_LETTER_SUBJ);
-        Assert.assertTrue(letterSubj.getText().contains(Locators.SUBJECT));
+        if(!helper.isElementEnableByXpath(Locators.YANDEX_XPATH_LAST_SENT_LETTER)){
+        WebElement sentLetters = helper.getByXpath(Locators.YANDEX_XPATH_SENT_LETTERS);
+        sentLetters.click();
+        }
+        Assert.assertTrue(helper.isElementPresentByXpath(Locators.YANDEX_XPATH_LAST_SENT_LETTER));
     }
 
     @Test(priority=4, description = "Logout")
     public void logout(){
         WebElement settings = helper.getByXpath(Locators.YANDEX_XPATH_SETTINGS);
         settings.click();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         WebElement logout = helper.getByXpath(Locators.YANDEX_XPATH_LOGOUT);
         logout.click();
         Assert.assertTrue(helper.isElementPresentByXpath(Locators.YANDEX_XPATH_LOGIN));

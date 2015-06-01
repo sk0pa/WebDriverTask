@@ -44,4 +44,7 @@ public class Helper {
         return !this.driver.findElements(By.id(id)).isEmpty();
     }
 
+    public boolean isElementEnableByXpath(String xpath){
+        return this.driver.findElement(By.xpath(xpath)).isDisplayed();
+    }
 }

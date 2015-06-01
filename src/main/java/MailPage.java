@@ -22,7 +22,7 @@ public class MailPage extends PageObject {
         //     elementSubj.clear();
         elementSubj.sendKeys(subject);
 
-        elementBody.clear();
+       // elementBody.clear();
         elementBody.sendKeys(body);
     }
 
