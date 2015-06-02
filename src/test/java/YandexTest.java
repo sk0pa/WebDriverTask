@@ -58,16 +58,24 @@ public class YandexTest {
     public void sendLetter() throws Exception{
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         Thread.sleep(3000);
+
+
         WebElement draftLink = helper.getByXpath(Locators.YANDEX_XPATH_DRAFTS);
+
         DraftPage draftPage = mailPage.goToDraft(draftLink);
         if(!helper.isElementEnableByXpath(Locators.YANDEX_XPATH_LAST_DRAFT)){
             draftLink.click();
         }
-        Thread.sleep(2000);
-        WebElement lastDraft = helper.getByXpath(Locators.YANDEX_XPATH_LAST_DRAFT);
-        WebElement lastDraftText = helper.getByXpath(Locators.YANDEX_XPATH_DRAFT_TEXT);
-     //   Assert.assertEquals(lastDraftText.getText(),Locators.BODY);
+        Thread.sleep(3000);
+//        WebElement lastDraftText = helper.getByXpath(Locators.YANDEX_XPATH_DRAFT_TEXT);
+        WebElement lastDraft = helper.getElementClickableByXpath(Locators.YANDEX_XPATH_LAST_DRAFT);
+       // Assert.assertTrue(lastDraftText.getText().contains(Locators.BODY));
         draftPage.openLastDraft(lastDraft);
+
+     //   WebElement lastDraft = helper.getByXpath(Locators.YANDEX_XPATH_LAST_DRAFT);
+       // WebElement lastDraftText = helper.getByXpath(Locators.YANDEX_XPATH_DRAFT_TEXT);
+     //   Assert.assertEquals(lastDraftText.getText(),Locators.BODY);
+      //  draftPage.openLastDraft(lastDraft);
         WebElement copySMS = helper.getByXpath("//div[@class='b-yabble__link js-sms-open-link daria-action']");
 
         WebElement sendButton = helper.getByXpath(Locators.YANDEX_XPATH_SEND_BUTTON);

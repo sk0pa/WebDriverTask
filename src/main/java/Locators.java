@@ -59,7 +59,7 @@ public class Locators {
     public static final String YANDEX_XPATH_CONFIRM_SAVEDRAFT="//button[@data-action='dialog.save']";
     public static final String YANDEX_XPATH_SAVEDRAFT="//button[@data-action='compose.close']";
     public static final String YANDEX_XPATH_DRAFTS="//a[@href='#draft']";
-    public static final String YANDEX_XPATH_LAST_DRAFT ="//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__from__text']";
+    public static final String YANDEX_XPATH_LAST_DRAFT ="//div[@class='block-messages'][2]//span[@class='b-messages__from__text'][1]";
     public static final String YANDEX_XPATH_DRAFT_TEXT ="//div[@data-action='mail.message.show-or-select'][1]//span[@class='b-messages__firstline']";
     public static final String YANDEX_XPATH_SEND_BUTTON = "//button[@id='compose-submit']";
     public static final String YANDEX_XPATH_IN = "//a[@href='#inbox']";

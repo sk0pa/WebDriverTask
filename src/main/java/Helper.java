@@ -47,4 +47,9 @@ public class Helper {
     public boolean isElementEnableByXpath(String xpath){
         return this.driver.findElement(By.xpath(xpath)).isDisplayed();
     }
+
+    public WebElement getElementClickableByXpath(String xpath){
+        return new WebDriverWait(this.driver, 60).until(ExpectedConditions.elementToBeClickable(By.
+                xpath(xpath)));
+    }
 }
